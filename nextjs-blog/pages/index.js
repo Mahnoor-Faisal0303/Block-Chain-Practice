@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { ethers } from 'ethers';
-import FAMEABI from '../fameABI.json';
+import FAMEABI from '../src/fameABI.json';
 
 const useWallet = () => {
 
