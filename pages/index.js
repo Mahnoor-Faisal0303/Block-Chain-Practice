@@ -13,6 +13,7 @@ const useWallet = () => {
   useEffect(() => {
     async function connectToContract() {
       try {
+        //url
         const rpcUrl = 'https://rpc.ankr.com/polygon/8cd6b1cea2d3af26c0e267955e74bc8c41cd053b47d9fc04f3dacbf2c0c8557a';
         const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
 
