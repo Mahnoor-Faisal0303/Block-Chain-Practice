@@ -1,3 +1,4 @@
+'use client';
 // import { useEffect, useState } from "react";
 // import Head from "next/head";
 // import { ethers } from "ethers";
@@ -58,8 +59,9 @@
 
 import { useEffect } from "react";
 import useContractData from "../app/hooks/useContractData";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-export default function homePage() {
+const HomePage =()=> {
   const { depositAmount, gameDuration } = useContractData();
 
   useEffect(() => {
@@ -70,11 +72,13 @@ export default function homePage() {
     console.group("GameDuration Function"); 
     console.log("Game Duration:", gameDuration);
     console.groupEnd();
-  }, [depositAmount, gameDuration]);
+  }, []);
 
   return (
     <>
-     <h1>contractData</h1>
+    <ConnectButton />
     </>
   );
 };
+
+export default HomePage;
