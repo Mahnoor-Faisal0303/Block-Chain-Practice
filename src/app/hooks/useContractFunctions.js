@@ -22,17 +22,21 @@ const useContractFunctions = () => {
       //setEthersProvider(provider);
 
 
-  const getDepositAmount = async () => {
-      const deposit = await contractPolygon.depositAmount();
-      return deposit.toString();
-};
+  // const getDepositAmount = async () => {
+      const deposit = contractPolygon.depositAmount();
+      //console.log("------>",deposit);
+      //return deposit.toString();
+//};
 
-  const getGameDuration = async () => {
-        const duration = await contractPolygon.gameDuration();
-        return duration.toString();
-  };
+const duration = contractPolygon.gameDuration();
 
-    return {getGameDuration,getDepositAmount};
+  // const getGameDuration = async () => {
+  //       const duration = await contractPolygon.gameDuration();
+  //       console.log("------>",duration.toString());
+  //       return duration.toString();
+  // };
+
+    return {duration,deposit};
 };
 
 export default useContractFunctions;

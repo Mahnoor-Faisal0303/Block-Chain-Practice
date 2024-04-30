@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from "react";
 import useContractData from "../app/hooks/useContractData";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import {ConnectWalletButton} from '../app/component/connectWalletButton';
 
 const HomePage =()=> {
   const { depositAmount, gameDuration } = useContractData();
@@ -18,7 +18,9 @@ const HomePage =()=> {
 
   return (
     <>
-    <ConnectButton />
+    <h1>DepositAmount: {depositAmount}</h1>
+    <h1>GameDuration: {gameDuration}</h1>
+    <ConnectWalletButton/>
     </>
   );
 };
