@@ -1,5 +1,3 @@
-import useContractData from "../hooks/useContractData";
-
 import { ethers } from "ethers";
 import FAMEABI from "../../abi/fameABI.json";
 import { rpcUrl, FAMECONTRACTADDRESS } from "../../config/config";
@@ -12,12 +10,19 @@ const useContractFunctions = () => {
     FAMEABI,
     provider
   );
+  console.log(contractPolygon);
 
-  const deposit = contractPolygon.depositAmount();
+  const getDepositAmount = async () => {
+    const deposit = await contractPolygon.depositAmount();
+    return deposit.toString();
+  };
 
-  const duration = contractPolygon.gameDuration();
+  const getGameDuration = async () => {
+    const duration = await contractPolygon.gameDuration();
+    return duration.toString();
+  };
 
-  return { duration, deposit };
+  return { getDepositAmount, getGameDuration };
 };
 
 export default useContractFunctions;

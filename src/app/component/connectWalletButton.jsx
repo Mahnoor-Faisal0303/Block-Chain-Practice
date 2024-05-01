@@ -7,7 +7,6 @@ export const ConnectWalletButton = () => {
       {({
         account,
         chain,
-        openAccountModal,
         openChainModal,
         openConnectModal,
         authenticationStatus,
