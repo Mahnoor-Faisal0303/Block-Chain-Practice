@@ -14,7 +14,7 @@ const useContractFunctions = () => {
   const getendGameTimestamp = async () => {
     const GameTimestamp = await contractPolygon.endGameTimestamp();
     return GameTimestamp.toString();
-};
+  };
 
   const getDepositAmount = async () => {
     const deposit = await contractPolygon.depositAmount();
@@ -26,8 +26,7 @@ const useContractFunctions = () => {
     return duration.toString();
   };
 
-
-  return {getendGameTimestamp, getDepositAmount, getGameDuration };
+  return { getendGameTimestamp, getDepositAmount, getGameDuration };
 };
 
 export default useContractFunctions;

@@ -4,8 +4,9 @@ import useContractFunctions from "../hooks/useContractFunctions";
 const useContractData = () => {
   const [depositAmount, setDepositAmount] = useState(null);
   const [gameDuration, setGameDuration] = useState(null);
-  const [timeStamp,setTimeStamp]=useState(null);
-  const { getendGameTimestamp,getDepositAmount, getGameDuration } = useContractFunctions();
+  const [timeStamp, setTimeStamp] = useState(null);
+  const { getendGameTimestamp, getDepositAmount, getGameDuration } =
+    useContractFunctions();
 
   useEffect(() => {
     getendGameTimestamp().then((time) => {
@@ -19,13 +20,9 @@ const useContractData = () => {
     getGameDuration().then((duration) => {
       setGameDuration(duration);
     });
-    
-
   }, []);
 
-
-
-  return { depositAmount, gameDuration,timeStamp };
+  return { depositAmount, gameDuration, timeStamp };
 };
 
 export default useContractData;
