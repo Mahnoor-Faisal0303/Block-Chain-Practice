@@ -10,7 +10,11 @@ const useContractFunctions = () => {
     FAMEABI,
     provider
   );
-  console.log(contractPolygon);
+
+  const getendGameTimestamp = async () => {
+    const GameTimestamp = await contractPolygon.endGameTimestamp();
+    return GameTimestamp.toString();
+};
 
   const getDepositAmount = async () => {
     const deposit = await contractPolygon.depositAmount();
@@ -22,7 +26,8 @@ const useContractFunctions = () => {
     return duration.toString();
   };
 
-  return { getDepositAmount, getGameDuration };
+
+  return {getendGameTimestamp, getDepositAmount, getGameDuration };
 };
 
 export default useContractFunctions;
