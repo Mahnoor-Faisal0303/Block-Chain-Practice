@@ -1,8 +1,7 @@
 import { ethers } from "ethers";
-import FAMEABI from "../../abi/fameABI.json";
-import { rpcUrl, FAMECONTRACTADDRESS } from "../../config/config";
+import FAMEABI from "../abi/fameABI.json";
+import { rpcUrl, FAMECONTRACTADDRESS } from "../config/config";
 
-const useContractFunctions = () => {
   const provider = new ethers.providers.JsonRpcProvider(rpcUrl);
 
   const contractPolygon = new ethers.Contract(
@@ -12,27 +11,21 @@ const useContractFunctions = () => {
   );
   console.log(contractPolygon);
 
-  const getendGameTimestamp = async () => {
+export async function getendGameTimestamp() {
     const GameTimestamp = await contractPolygon.endGameTimestamp();
     return GameTimestamp.toString();
-  };
-
-  const getDepositAmount = async () => {
+}
+export async function getDepositAmount() {
     const deposit = await contractPolygon.depositAmount();
     return deposit.toString();
   };
 
-  const getGameDuration = async () => {
+export async function getGameDuration() {
     const duration = await contractPolygon.gameDuration();
     return duration.toString();
   };
-  const getTopFame = async () => {
+export async function getTopFame() {
     const topFame = await contractPolygon.topFameValues(0);
     return topFame.toString();
   };
 
-
-  return { getendGameTimestamp, getDepositAmount, getGameDuration,getTopFame };
-};
-
-export default useContractFunctions;

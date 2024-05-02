@@ -5,10 +5,10 @@ const Timer = () => {
   console.log(timeStamp);
 
   const [countdownTime, setCountdownTime] = useState({
-    countdownDays: "",
-    countdownHours: "",
-    countdownMinutes: "",
-    countdownSeconds: "",
+    countdownDays: "0",
+    countdownHours: "0",
+    countdownMinutes: "0",
+    countdownSeconds: "0",
   });
 
   const calculateCountdown = () => {
@@ -45,7 +45,6 @@ const Timer = () => {
   };
 
   useEffect(() => {
-    calculateCountdown();
     const timerInterval = setInterval(calculateCountdown, 1000);
     return () => clearInterval(timerInterval);
   }, [timeStamp]);
