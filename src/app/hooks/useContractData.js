@@ -32,23 +32,32 @@
 
 // export default useContractData;
 
-
-import { useState, useEffect } from "react";
-import { useQuery } from '@tanstack/react-query';
-import { getDepositAmount } from "../../api/functions";
+import { useQuery } from "@tanstack/react-query";
+import {
+  getDepositAmount,
+  getGameDuration,
+  getTopFame,
+} from "../../api/functions";
 
 const useContractData = () => {
-  const [depositAmount, setDepositAmount] = useState(null);
+  const { data: depositAmount } = useQuery({
+    queryKey: ["deposit"],
+    queryFn: getDepositAmount,
+  });
+  const { data: gameDuration } = useQuery({
+    queryKey: ["game"],
+    queryFn: getGameDuration,
+  });
+  const { data: topValue } = useQuery({
+    queryKey: ["topfame"],
+    queryFn: getTopFame,
+  });
 
-  const { data: depositData, isLoading: depositLoading, isError: depositError } = useQuery({queryKey: ['deposit'],queryFn: getDepositAmount});
-
-  useEffect(() => {
-    if (depositData) {
-      setDepositAmount(depositData);
-    }
-  }, [depositData]);
-
-  return { depositAmount, depositLoading, depositError };
+  return {
+    depositAmount,
+    gameDuration,
+    topValue,
+  };
 };
 
 export default useContractData;
