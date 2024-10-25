@@ -1,45 +1,17 @@
-// import { useState, useEffect } from "react";
-// import useContractFunctions from "../hooks/useContractFunctions";
-
-// const useContractData = () => {
-//   const [depositAmount, setDepositAmount] = useState(null);
-//   const [gameDuration, setGameDuration] = useState(null);
-//   const [timeStamp, setTimeStamp] = useState(null);
-//   const [topValue,setTopValue] = useState(null);
-//   const { getendGameTimestamp, getDepositAmount, getGameDuration, getTopFame } =
-//     useContractFunctions();
-
-//   useEffect(() => {
-//     getendGameTimestamp().then((time) => {
-//       setTimeStamp(time);
-//     });
-
-//     getDepositAmount().then((deposit) => {
-//       setDepositAmount(deposit);
-//     });
-
-//     getGameDuration().then((duration) => {
-//       setGameDuration(duration);
-//     });
-
-//     getTopFame().then((fame) => {
-//       setTopValue(fame);
-//     });
-//   }, []);
-
-//   return { depositAmount, gameDuration, timeStamp,topValue };
-// };
-
-// export default useContractData;
-
 import { useQuery } from "@tanstack/react-query";
 import {
+  getendGameTimestamp,
   getDepositAmount,
   getGameDuration,
   getTopFame,
+  getGamesLength
 } from "../../api/functions";
 
 const useContractData = () => {
+  const { data: timeStamp } = useQuery({
+    queryKey: ["timeStamp"],
+    queryFn: getendGameTimestamp,
+  });
   const { data: depositAmount } = useQuery({
     queryKey: ["deposit"],
     queryFn: getDepositAmount,
@@ -52,11 +24,17 @@ const useContractData = () => {
     queryKey: ["topfame"],
     queryFn: getTopFame,
   });
+  const { data: gameLength } = useQuery({
+    queryKey: ["gamelength"],
+    queryFn: getGamesLength,
+  });
 
   return {
+    timeStamp,
     depositAmount,
     gameDuration,
     topValue,
+    gameLength
   };
 };
 

@@ -2,7 +2,6 @@ import useContractData from "../hooks/useContractData";
 import { useState, useEffect } from "react";
 const Timer = () => {
   const { timeStamp } = useContractData();
-  console.log(timeStamp);
 
   const [countdownTime, setCountdownTime] = useState({
     countdownDays: "0",

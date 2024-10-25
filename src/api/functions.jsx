@@ -12,8 +12,8 @@ import { rpcUrl, FAMECONTRACTADDRESS } from "../config/config";
   console.log(contractPolygon);
 
 export async function getendGameTimestamp() {
-    const GameTimestamp = await contractPolygon.endGameTimestamp();
-    return GameTimestamp.toString();
+    const timeStamp = await contractPolygon.endGameTimestamp();
+    return timeStamp.toString();
 }
 export async function getDepositAmount() {
     const deposit = await contractPolygon.depositAmount();
@@ -28,4 +28,7 @@ export async function getTopFame() {
     const topFame = await contractPolygon.topFameValues(0);
     return topFame.toString();
   };
-
+  export async function getGamesLength() {
+    const gameLength = await contractPolygon.getGamesLength();
+    return gameLength.toString();
+  };
